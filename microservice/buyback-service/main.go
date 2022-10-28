@@ -46,7 +46,8 @@ func topup(w http.ResponseWriter, r *http.Request) {
 		helper.Respond(w, http.StatusUnprocessableEntity, true, "", err.Error())
 		return
 	}
-	if b.Gram < saldo {
+	if b.Gram > saldo {
+		fmt.Println("masuk")
 		err = errors.New("Gram must be bigger than saldo")
 		log.Print(err.Error())
 		helper.Respond(w, http.StatusUnprocessableEntity, true, "", err.Error())
